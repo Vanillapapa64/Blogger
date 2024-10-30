@@ -41,7 +41,7 @@ export const Publish = () => {
 
 function TextEditor({ onChange }: {onChange: (e: ChangeEvent<HTMLTextAreaElement>) => void}) {
     return <div className="mt-2">
-        <div className="w-full mb-4 ">
+        <div className="w-full mb-4 bg-white">
             <div className="flex items-center justify-between border">
             <div className="my-2 bg-white rounded-b-lg w-full">
                 <label className="sr-only">Publish post</label>

@@ -44,8 +44,7 @@ export const useBlog = ({ id }: { id: string }) => {
 export const useBlogs = () => {
     const [loading, setLoading] = useState(true);
     const [blogs, setBlogs] = useState<Blog[]>([]);
-
-    const navigate = useNavigate();
+    const [redirect,setredirect]=useState(false)
 
     useEffect(() => {
         axios.get(`${BACKEND_URL}/api/v1/blog/bulk`, {
@@ -56,15 +55,17 @@ export const useBlogs = () => {
         .then(response => {
             setBlogs(response.data.blogswithist);
             setLoading(false);
+            
         })
         .catch(err => {
             console.error("Error fetching blogs:", err);
-            navigate('/signin');
+            setredirect(true)
         });
-    }, [navigate]);
+    }, []);
 
     return {
         loading,
         blogs,
+        redirect
     };
 };

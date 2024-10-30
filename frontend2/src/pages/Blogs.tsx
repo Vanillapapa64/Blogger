@@ -1,12 +1,17 @@
-
+import { useNavigate } from "react-router-dom";
 import { Appbar } from "../components/Appbar"
 import { BlogCard } from "../components/BlogCard"
 import { BlogSkeleton } from "../components/BlogSkeleton";
 import { useBlogs } from "../hooks";
-
+import { useEffect } from "react";
 export const Blogs = () => {
-    const { loading, blogs } = useBlogs();
-    
+    const { loading, blogs ,redirect} = useBlogs();
+    const navigate=useNavigate()
+    useEffect(() => {
+        if (redirect) {
+            navigate("/signin");
+        }
+    }, [redirect, navigate]);
     if (loading) {
         return <div>
             <Appbar /> 

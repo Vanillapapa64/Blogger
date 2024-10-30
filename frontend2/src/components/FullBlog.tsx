@@ -7,7 +7,7 @@ export const FullBlog = ({ blog }: {blog: Blog}) => {
         <Appbar />
         <div className="flex justify-center">
             <div className="grid grid-cols-12 px-10 w-full pt-200 max-w-screen-xl pt-12">
-                <div className="col-span-8">
+                <div className="col-span-10">
                     <div className="text-5xl font-extrabold text-slate-500">
                         {blog.title}
                     </div>
@@ -18,13 +18,13 @@ export const FullBlog = ({ blog }: {blog: Blog}) => {
                         {blog.content}
                     </div>
                 </div>
-                <div className="col-span-4">
+                <div className="col-span-2">
                     <div className="text-slate-600 text-lg text-slate-400">
                         Author
                     </div>
                     <div className="flex w-full">
-                        <div className="pr-4 flex flex-col justify-center text-white">
-                            <Avatar  name={blog.author.name || "Anonymous"} />
+                        <div className="pr-4 flex flex-col text-2xl justify-center text-white">
+                            {blog.author.name || "Anonymous"} 
                         </div>
                         
                     </div>  

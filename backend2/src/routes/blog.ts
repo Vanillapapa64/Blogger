@@ -3,6 +3,7 @@ import { PrismaClient } from "@prisma/client/edge";
 import { withAccelerate } from "@prisma/extension-accelerate";
 import { Hono } from "hono";
 import { verify } from "hono/jwt";
+import { number } from "zod";
 
 export const blogRouter = new Hono<{
     Bindings: {
@@ -119,7 +120,40 @@ blogRouter.get('/bulk', async (c) => {
         blogswithist
     })
 })
-
+blogRouter.get('/ownblogs',async(c)=>{
+    const prisma = new PrismaClient({
+        datasourceUrl: c.env.DATABASE_URL,
+    }).$extends(withAccelerate())
+    try{
+        const authorid=c.get("userId")
+    const ownblogs= await prisma.post.findMany({
+        where:{
+            authorId:Number(authorid)
+        },
+        select:{
+            id: true,
+            title: true,
+            content: true,
+            publishedDate:true
+        },
+        orderBy:{
+            publishedDate:'desc'
+        }
+    })
+    const ownblogswithist=ownblogs.map(blog=>({
+        ...blog,
+        publishedDate: new Date(blog.publishedDate).toLocaleString("en-IN",{timeZone:"Asia/Kolkata"})
+    }))
+    return c.json({
+        ownblogs:ownblogswithist
+    })
+    }catch(err){
+        c.status(411);
+        return c.json({
+            message: "Error while fetching own blog post"
+        });
+    }
+})
 blogRouter.get('/:id', async (c) => {
     const id = c.req.param("id");
     const prisma = new PrismaClient({

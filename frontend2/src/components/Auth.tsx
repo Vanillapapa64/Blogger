@@ -29,7 +29,7 @@ export const Auth = ({ type }: { type: "signup" | "signin" }) => {
             <div>
                 <div className="px-10">
                     <div className="text-3xl font-extrabold">
-                        Create an account
+                        {type==="signin"? "Login to Account":"Create an Account"}
                     </div>
                     <div className="text-slate-500">
                         {type === "signin" ? "Don't have an account?" : "Already have an account?" }
@@ -73,7 +73,7 @@ interface LabelledInputType {
 
 function LabelledInput({ label, placeholder, onChange, type }: LabelledInputType) {
     return <div>
-        <label className="text-white block mb-2 text-sm text-black font-semibold pt-4">{label}</label>
+        <label className="text-white block mb-2 text-sm text-black font-semibold pt-4 ">{label}</label>
         <input onChange={onChange} type={type || "text"} id="first_name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder={placeholder} required />
     </div>
 }

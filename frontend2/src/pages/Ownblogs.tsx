@@ -1,12 +1,12 @@
-import { useNavigate } from "react-router-dom";
+
 import { Appbar } from "../components/Appbar"
-import { BlogCard } from "../components/BlogCard"
+
 import { BlogSkeleton } from "../components/BlogSkeleton";
 import { useownBlogs } from "../hooks";
 import { EditBlogCard } from "@/components/Editblogcard";
 export const Ownblogs = () => {
     const { loading, blogs } = useownBlogs();
-    const navigate=useNavigate()
+
     if (loading) {
         return <div>
             <Appbar /> 

@@ -1,4 +1,4 @@
-import { Avatar, Avatar2 } from "./BlogCard"
+import {  Avatar2 } from "./BlogCard"
 import { Link } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
 export const Appbar = () => {

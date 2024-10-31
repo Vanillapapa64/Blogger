@@ -1,8 +1,13 @@
+
+import { usernameatom } from "@/assets/store"
 import {  Avatar2 } from "./BlogCard"
 import { Link } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
+import { useRecoilValue } from "recoil"
+
 export const Appbar = () => {
     const navigate=useNavigate()
+    const name=useRecoilValue(usernameatom)
     return <div className="border-b bg-gradient-to-r from-transparent to-indigo-950 flex justify-between px-10 py-4">
         <Link to={'/'} className="flex flex-col justify-center cursor-pointer ">
         <div className="flex items-center justify-center ">
@@ -23,7 +28,7 @@ export const Appbar = () => {
                 </span>
                 </button>
             </Link>
-            <Avatar2 name="Navkirat" onLogout={()=>{
+            <Avatar2 name={name} onLogout={()=>{
                 localStorage.removeItem("token")
                 navigate('/signin')
             }} onOwnBlogs={()=>navigate('/own')}/>

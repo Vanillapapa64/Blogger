@@ -6,11 +6,13 @@ import { Blogs } from "./pages/Blogs";
 import { Publish } from './pages/Publish';
 import { Edit } from './pages/Edit';
 import { Ownblogs } from './pages/Ownblogs';
+import { RecoilRoot } from 'recoil';
 
 function App() {
 
   return (
     <div >
+      <RecoilRoot>
       <BrowserRouter>
         <Routes>
           <Route path="/signup" element={<Signup />} />
@@ -22,6 +24,7 @@ function App() {
           <Route path="/own" element={<Ownblogs />} />
         </Routes>
       </BrowserRouter>
+      </RecoilRoot>
     </div>
   )
 }

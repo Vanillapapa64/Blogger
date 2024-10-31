@@ -3,7 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { Usersignuptype } from "@navkiratsingh/bloggercommon";
 import axios from "axios";
 import { BACKEND_URL } from "../config";
-
+import {  useSetRecoilState } from "recoil"
+import { usernameatom } from "@/assets/store"
 export const Auth = ({ type }: { type: "signup" | "signin" }) => {
     const navigate = useNavigate();
     const [postInputs, setPostInputs] = useState<Usersignuptype>({
@@ -11,9 +12,10 @@ export const Auth = ({ type }: { type: "signup" | "signin" }) => {
         email: "",
         password: ""
     });
-
+    const setusername=useSetRecoilState(usernameatom)
     async function sendRequest() {
         try {
+            setusername(postInputs.email)
             const response = await axios.post(`${BACKEND_URL}/api/v1/user/${type === "signup" ? "signup" : "signin"}`, postInputs);
             const jwt = response.data;
             localStorage.setItem("token", jwt);
@@ -44,6 +46,7 @@ export const Auth = ({ type }: { type: "signup" | "signin" }) => {
                             ...postInputs,
                             name: e.target.value
                         })
+                        
                     }} /> : null}
                     <LabelledInput label="Username" placeholder="navkirat@gmail.com" onChange={(e) => {
                         setPostInputs({

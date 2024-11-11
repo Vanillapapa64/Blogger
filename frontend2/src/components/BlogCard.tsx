@@ -83,12 +83,12 @@ export function Avatar2({ name = '', onOwnBlogs, onLogout }: { name?: string, on
         <DropdownMenu open={open} onOpenChange={setOpen}>
         <DropdownMenuTrigger asChild>
             <div 
-            className="relative inline-flex items-center justify-center w-16 h-16 bg-gray-100 rounded-full dark:bg-gray-600 cursor-pointer"
+            className="relative inline-flex items-center justify-center size-10 lg:w-16 lg:h-16 bg-gray-100 rounded-full dark:bg-gray-600 cursor-pointer"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             >
             {typeof getInitial(name) === 'string' ? (
-                <span className="text-2xl text-gray-600 dark:text-gray-300">{getInitial(name)}</span>
+                <span className="lg:text-2xl text-lg text-gray-600 dark:text-gray-300">{getInitial(name)}</span>
             ) : (
                 getInitial(name)
             )}

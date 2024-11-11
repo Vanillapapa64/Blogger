@@ -12,10 +12,10 @@ export const Publish = () => {
     return <div>
         <Appbar />
         <div className="flex justify-center w-full pt-8 "> 
-            <div className="max-w-screen-lg w-full pl-8 xl:pl-18 ">
+            <div className="max-w-screen-lg w-full px-4 sm:px-6 lg:px-8 ">
                 <input onChange={(e) => {
                     setTitle(e.target.value)
-                }} type="text" className=" w-9/12 lg:w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Title" />
+                }} type="text" className=" w-full sm:w-9/12 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5" placeholder="Title" />
 
                 <TextEditor onChange={(e) => {
                     setDescription(e.target.value)
@@ -41,7 +41,7 @@ export const Publish = () => {
 
 function TextEditor({ onChange }: {onChange: (e: ChangeEvent<HTMLTextAreaElement>) => void}) {
     return <div className="mt-2">
-        <div className="w-9/12 lg:w-full mb-4 bg-white">
+        <div className="w-full sm:w-9/12 mb-4 bg-white">
             <div className="flex  justify-between border">
             <div className="my-2 bg-white rounded-b-lg w-full">
                 <label className="sr-only">Publish post</label>

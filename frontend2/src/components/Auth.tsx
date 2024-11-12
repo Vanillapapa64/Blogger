@@ -48,7 +48,7 @@ export const Auth = ({ type }: { type: "signup" | "signin" }) => {
                         })
                         
                     }} /> : null}
-                    <LabelledInput label="Username" placeholder="navkirat@gmail.com" onChange={(e) => {
+                    <LabelledInput label="Email" placeholder="navkirat@gmail.com" onChange={(e) => {
                         setPostInputs({
                             ...postInputs,
                             email: e.target.value

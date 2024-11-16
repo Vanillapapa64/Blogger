@@ -5,7 +5,7 @@ import { useBlog } from "../hooks";
 import {useNavigate, useParams} from "react-router-dom";
 import axios from "axios";
 import { BACKEND_URL } from "@/config";
-
+import { useEffect } from "react";
 // atomFamilies/selectorFamilies
 export const Edit = () => {
     const { id } = useParams();
@@ -15,6 +15,12 @@ export const Edit = () => {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const navigate = useNavigate();
+    useEffect(() => {
+        if (blog) {
+            setTitle(blog.title);
+            setDescription(blog.content);
+        }
+    }, [blog]);
     if (loading || !blog) {
         return <div>
             <Appbar />
@@ -33,17 +39,17 @@ export const Edit = () => {
             <div className="max-w-screen-lg w-full">
                 <input onChange={(e) => {
                     setTitle(e.target.value)
-                }} type="text" value={blog.title} className="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Title" />
+                }} type="text" value={title} className="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Title" />
 
-                <TextEditor value={blog.content} onChange={(e) => {
+                <TextEditor value={description} onChange={(e) => {
                     setDescription(e.target.value)
                 }} />
                 <button onClick={async () => {
-                    const response = await axios.put(`${BACKEND_URL}/api/v1/blog`, {
+                    await axios.put(`${BACKEND_URL}/api/v1/blog`, {
                         
-                        title,
+                        title:title,
                         content: description,
-                        id
+                        id:Number(id)
                     }, {
                         headers: {
                             Authorization: localStorage.getItem("token")

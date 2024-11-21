@@ -3,9 +3,6 @@ main = "src/index.ts"
 compatibility_date = "2024-10-26"
 compatibility_flags = [ "nodejs_compat" ]
 
-[vars]
-DATABASE_URL="prisma://accelerate.prisma-data.net/?api_key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlfa2V5IjoiNzAwYWFlNWQtMTNiNi00NWEwLWE1YzEtYjc4MjRkYzRkYzE0IiwidGVuYW50X2lkIjoiMWNlOTZhMWE5ZDVlYzUzNGNmMjU2M2U1N2EzZTBmYTM3ZTIzYTMwNTY1MDNiMzc4MmY2MzRkZDViYmMxNjdhMSIsImludGVybmFsX3NlY3JldCI6IjMyMDEzMGJjLTg1MmQtNDZlYS05NTU2LWJlMDdiN2FlMGFlZCJ9.xen9KvTFNUnQvrXXQsEcXVozbrXPNd91g9XWgDavzvw"
-JWT_SECRET = "prachi"
 
 # [[kv_namespaces]]
 # binding = "MY_KV_NAMESPACE"

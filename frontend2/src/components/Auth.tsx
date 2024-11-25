@@ -21,7 +21,7 @@ export const Auth = ({ type }: { type: "signup" | "signin" }) => {
             localStorage.setItem("token", jwt);
             navigate("/");
         } catch(e) {
-            alert("Error while signing up")
+            alert("Passwords were changed. Please ping 9876462001 for new password")
             // alert the user here that the request failed
         }
     }
